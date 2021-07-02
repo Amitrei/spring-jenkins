@@ -15,8 +15,7 @@ node {
         }
        stage('Push image') {
                                                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-       app.push("test-java")
-       app.push("latest")
+       app.push()
               }
            }
         }
