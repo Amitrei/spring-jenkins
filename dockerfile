@@ -5,6 +5,6 @@ COPY mvnw /app/mvnw
 COPY .mvn /app/.mvn
 COPY pom.xml /app/pom.xml
 COPY . /app/
-RUN chmod +x ./mvnw
+RUN chmod +x ./mvnw install
 RUN chmod +x /app/target/jenkinsdemo-0.0.1-SNAPSHOT.jar
 ENTRYPOINT ["java","-jar","/app/target/jenkinsdemo-0.0.1-SNAPSHOT.jar"]
