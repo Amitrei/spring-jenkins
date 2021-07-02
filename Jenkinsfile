@@ -6,7 +6,7 @@ node {
       }
       stage('Build image') {
 
-            app = docker.build 'test-java:1.0.0'
+            app = docker.build 'test-java'
        }
       stage('Test image') {
             app.inside {
@@ -15,7 +15,7 @@ node {
         }
        stage('Push image') {
                                                   docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-       app.push("${env.BUILD_NUMBER}")
+       app.push("test-java")
        app.push("latest")
               }
            }
