@@ -1,22 +1,22 @@
-pipeline{
-    agent any
-    stages{
-        stage("pull from SCM"){
-            steps{
-                git 'https://github.com/Amitrei/spring-jenkins.git' 
-                
+node {
+      def app
+      stage('Clone repository') {
+
+            checkout scm
+      }
+      stage('Build image') {
+
+            app = docker.build 'test-java:1.0.0'
+       }
+      stage('Test image') {
+            app.inside {
+             sh 'echo "Tests passed"'
             }
-           
         }
-
-        stage("docker build") {
-            steps{
-                script{
-                                    docker.build("test-java")
-
-                }
-            }
-            }
-    }
- 
-}
+       stage('Push image') {
+                                                  docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+       app.push("${env.BUILD_NUMBER}")
+       app.push("latest")
+              }
+           }
+        }
