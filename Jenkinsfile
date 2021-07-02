@@ -4,9 +4,9 @@ node {
 
             checkout scm
       }
-      stage('Build image') {
+      stage('Build image and push') {
 
-            app = docker.build 'test-java'
+            app = docker.build("amitreinich/test-java:latest")
        }
       stage('Test image') {
             app.inside {
@@ -14,8 +14,9 @@ node {
             }
         }
        stage('Push image') {
-                                                  docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
-       app.push()
+           docker.withRegistry('https://registry-1.docker.io/v2/', 'docker-hub') {
+        app.push()
+        }
               }
            }
         }
