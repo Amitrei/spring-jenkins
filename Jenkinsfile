@@ -9,8 +9,8 @@ node {
       if(env.BRANCH_NAME == "master") throw new Exception("You are on the master branch!")
       }
 
-      stage("GET POM XML DETAILS") {
-       sh 'ls'
+      stage("CREATE JAR") {
+       sh 'mvn install'
       }
 
       }
