@@ -14,9 +14,8 @@ def JAR_PATH
        sh 'mvn clean install'
       }
 
-       stage("JAR LOCATION") {
+       stage("BUILD DOCKER IMAGE") {
       JAR_PATH = sh(script:"find ./target -type f -name '*.jar'",    returnStdout: true).trim()
-      echo "full path is ${JAR_PATH}"
-
+       sh "docker build -t test-image --build-arg JAR_PATH=${JAR_PATH}"
        }
       }
