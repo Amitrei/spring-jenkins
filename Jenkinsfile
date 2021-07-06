@@ -1,5 +1,6 @@
 // dev env -> get proj name ->
 node {
+def JAR_PATH
       stage('SCM CHECKOUT') {
             checkout scm
       }
@@ -14,7 +15,7 @@ node {
       }
 
        stage("JAR LOCATION") {
-      def JAR_PATH = sh 'find ./target -type f -name "*.jar"'
+      JAR_PATH = sh 'find ./target -type f -name "*.jar"'
       echo "full path is ${JAR_PATH}"
 
        }
