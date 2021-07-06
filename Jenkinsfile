@@ -1,7 +1,16 @@
+// dev env -> get proj name ->
 node {
-      def app
-      stage('Clone repository') {
+      stage('SCM CHECKOUT') {
             checkout scm
-            echo env.BRANCH_NAME
       }
+
+      stage("BRANCH VALIDATION") {
+
+      if(env.BRANCH_NAME == "master") throw new Exception("You are on the master branch!")
+      }
+
+      stage("GET POM XML DETAILS") {
+       echo "pom details"
+      }
+
       }
