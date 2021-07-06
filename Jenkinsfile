@@ -10,7 +10,7 @@ node {
       }
 
       stage("GET POM XML DETAILS") {
-       sh 'mvn -version'
+       sh 'ls'
       }
 
       }
