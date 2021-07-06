@@ -15,7 +15,7 @@ def JAR_PATH
       }
 
        stage("JAR LOCATION") {
-      JAR_PATH = sh(script:"find ./target -type f -name ''*.jar'",    returnStdout: true).trim()
+      JAR_PATH = sh(script:"find ./target -type f -name '*.jar'",    returnStdout: true).trim()
       echo "full path is ${JAR_PATH}"
 
        }
