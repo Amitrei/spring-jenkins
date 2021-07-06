@@ -14,7 +14,8 @@ node {
       }
 
        stage("JAR LOCATION") {
-      sh 'find ./target -type f -name "*.jar"'
+      def JAR_PATH = sh 'find ./target -type f -name "*.jar"'
+      echo "full path is ${JAR_PATH}"
 
        }
       }
