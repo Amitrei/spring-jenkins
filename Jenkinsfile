@@ -10,7 +10,7 @@ node {
       }
 
       stage("GET POM XML DETAILS") {
-       sh 'cat pom.xml | grep `<name>`'
+       sh 'cat pom.xml'
       }
 
       }
