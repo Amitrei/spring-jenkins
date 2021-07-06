@@ -16,6 +16,6 @@ def JAR_PATH
 
        stage("BUILD DOCKER IMAGE") {
       JAR_PATH = sh(script:"find ./target -type f -name '*.jar'",    returnStdout: true).trim()
-       sh "docker build -t test-image --build-arg JAR_PATH=${JAR_PATH}"
+       sh "docker build -t test-image --build-arg JAR_PATH=${JAR_PATH} ."
        }
       }
