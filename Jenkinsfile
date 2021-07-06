@@ -10,7 +10,11 @@ node {
       }
 
       stage("CREATE JAR") {
-       sh 'mvn install'
+       sh 'mvn clean install'
       }
 
+       stage("JAR LOCATION") {
+      sh 'find ./target -type f -name "*.jar"'
+
+       }
       }
