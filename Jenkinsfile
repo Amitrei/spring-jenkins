@@ -10,7 +10,7 @@ node {
       }
 
       stage("GET POM XML DETAILS") {
-       echo "pom details"
+       sh 'ls'
       }
 
       }
