@@ -19,3 +19,7 @@ def JAR_PATH
        sh "docker build -t test-image --build-arg JAR_PATH=${JAR_PATH} ."
        }
       }
+
+stage("RUN IMAGE CONTAINER") {
+    sh "docker run test-image"
+}
